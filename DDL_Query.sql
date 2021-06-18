@@ -36,7 +36,7 @@ CREATE TABLE Customers(
 CREATE TABLE Cuci_Kiloan(
     kode_cuci INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_customers VARCHAR(11) NOT NULL,
-    id_employee VARCHAR(11) NOT NULL,
+    id_employee VARCHAR(11),
     kaos INT(3),
     kemeja INT(3),
     dress INT(3),
@@ -55,6 +55,8 @@ CREATE TABLE Pemesanan(
     id_order VARCHAR(11) PRIMARY KEY NOT NULL,
     kode_cuci INT(11) NOT NULL,
     id_layanan VARCHAR(11) NOT NULL
+    catatan TEXT,
+    alamat TEXT NOT NULL,
 );
 
 CREATE TABLE Status(
@@ -66,7 +68,7 @@ CREATE TABLE Pembayaran(
     id_pembayaran VARCHAR(11) PRIMARY KEY NOT NULL,
     id_order VARCHAR(11) NOT NULL,
     id_customers VARCHAR(11) NOT NULL,
-    id_employee VARCHAR(11) NOT NULL,
+    id_employee VARCHAR(11),
     id_status INT(2) NOT NULL,
     tanggal_transaksi DATETIME NOT NULL,
     berat INT(3) NOT NULL,
