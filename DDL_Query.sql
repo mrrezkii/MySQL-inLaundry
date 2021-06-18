@@ -6,6 +6,7 @@ USE db_inlaundry;
 -- Create TABLE 
 CREATE TABLE Cuci_Kiloan(
     kode_cuci VARCHAR(11) PRIMARY KEY NOT NULL,
+    id_customers VARCHAR(11) NOT NULL,
     kaos INT(3),
     kemeja INT(3),
     dress INT(3),
@@ -14,13 +15,20 @@ CREATE TABLE Cuci_Kiloan(
 );
 
 CREATE TABLE Jenis_Layanan(
-    kode_cuci VARCHAR(11) PRIMARY KEY NOT NULL,
-    no_owner VARCHAR(11) NOT NULL,
-    harga INT(11) NOT NULL
+    id_layanan VARCHAR(11) PRIMARY KEY NOT NULL,
+    nama_layanan TEXT NOT NULL,
+    harga INT(11) NOT NULL,
+    id_owner VARCHAR(11) NOT NULL
+);
+
+CREATE TABLE Pemesanan(
+    id_order VARCHAR(11) PRIMARY KEY NOT NULL,
+    kode_cuci VARCHAR(11) NOT NULL,
+    id_layanan VARCHAR(11) NOT NULL
 );
 
 CREATE TABLE Owner(
-    no_owner VARCHAR(11) PRIMARY KEY NOT NULL,
+    id_owner VARCHAR(11) PRIMARY KEY NOT NULL,
     username VARCHAR(11) NOT NULL,
     email TEXT NOT NULL,
     password VARCHAR(20) NOT NULL,
@@ -31,7 +39,7 @@ CREATE TABLE Owner(
 );
 
 CREATE TABLE Employee(
-    no_employee VARCHAR(11) PRIMARY KEY NOT NULL,
+    id_employee VARCHAR(11) PRIMARY KEY NOT NULL,
     username VARCHAR(11) NOT NULL,
     email TEXT NOT NULL,
     password VARCHAR(20) NOT NULL,
@@ -42,7 +50,7 @@ CREATE TABLE Employee(
 );
 
 CREATE TABLE Customers(
-    no_customers VARCHAR(11) PRIMARY KEY NOT NULL,
+    id_customers VARCHAR(11) PRIMARY KEY NOT NULL,
     username VARCHAR(11) NOT NULL,
     email TEXT NOT NULL,
     password VARCHAR(20) NOT NULL,
@@ -58,11 +66,11 @@ CREATE TABLE Status(
 );
 
 CREATE TABLE Pembayaran(
-    no_order VARCHAR(11) PRIMARY KEY NOT NULL,
-    no_customers VARCHAR(11) NOT NULL,
-    no_employee VARCHAR(11) NOT NULL,
+    id_pembayaran VARCHAR(11) PRIMARY KEY NOT NULL,
+    id_order VARCHAR(11) NOT NULL,
+    id_customers VARCHAR(11) NOT NULL,
+    id_employee VARCHAR(11) NOT NULL,
     id_status INT(2) NOT NULL,
-    kode_cuci VARCHAR(11) NOT NULL,
     tanggal_transaksi DATE NOT NULL,
     berat INT(3) NOT NULL,
     total INT(11) NOT NULL
@@ -71,20 +79,32 @@ CREATE TABLE Pembayaran(
 -- Alter relation between table
 ALTER TABLE Jenis_Layanan
 ADD CONSTRAINT fk_jenislayanan_owner
-FOREIGN KEY (no_owner) REFERENCES Owner(no_owner);
+FOREIGN KEY (id_owner) REFERENCES Owner(id_owner);
+
+ALTER TABLE Cuci_Kiloan
+ADD CONSTRAINT fk_cucikiloan_customers
+FOREIGN KEY (id_customers) REFERENCES Customers(id_customers);
+
+ALTER TABLE Pemesanan
+ADD CONSTRAINT fk_pemesanan_cucikiloan
+FOREIGN KEY (kode_cuci) REFERENCES Cuci_Kiloan(kode_cuci);
+
+ALTER TABLE Pemesanan
+ADD CONSTRAINT fk_pemesanan_jenislayanan
+FOREIGN KEY (id_layanan) REFERENCES Jenis_Layanan(id_layanan);
+
+ALTER TABLE Pembayaran
+ADD CONSTRAINT fk_pembayaran_order
+FOREIGN KEY (id_order) REFERENCES Pemesanan(id_order);
 
 ALTER TABLE Pembayaran
 ADD CONSTRAINT fk_pembayaran_customers
-FOREIGN KEY (no_customers) REFERENCES Customers(no_customers);
+FOREIGN KEY (id_customers) REFERENCES Customers(id_customers);
 
 ALTER TABLE Pembayaran
 ADD CONSTRAINT fk_pembayaran_employee
-FOREIGN KEY (no_employee) REFERENCES Employee(no_employee);
+FOREIGN KEY (id_employee) REFERENCES Employee(id_employee);
 
 ALTER TABLE Pembayaran
 ADD CONSTRAINT fk_pembayaran_status
 FOREIGN KEY (id_status) REFERENCES Status(id_status);
-
-ALTER TABLE Pembayaran
-ADD CONSTRAINT fk_pembayaran_cucikiloan
-FOREIGN KEY (kode_cuci) REFERENCES Cuci_Kiloan(kode_cuci);

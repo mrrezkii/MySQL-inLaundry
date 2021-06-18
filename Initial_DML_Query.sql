@@ -1,8 +1,6 @@
 -- Insert Actor (Without Foreign Key)
 INSERT INTO Owner
-VALUES("OWN001", "owner001", "owner001@gmail.com", "owner123", "Owner Merah", "Imut", "2000-11-27", "6285608845319"),
-("OWN002", "owner002", "owner002@gmail.com", "owner123", "Owner Hitam", "Cemberut", "2000-09-24", "6281234567890"),
-("OWN003", "owner003", "owner003@gmail.com", "owner123", "Owner Putih", "Sholeh", "1999-04-21", "6280987654321");
+VALUES("owner001@gmail.com", "owner123");
 
 INSERT INTO Employee
 VALUES("EMP001", "employee001", "employ001@gmail.com", "employee123", "Darmo", "Salim", "2000-12-12", "6285711227718"),
@@ -15,6 +13,7 @@ VALUES("CUS001", "customer001", "cust001@gmail.com", "customers123", "Sri", "Rah
 ("CUS003", "customer001", "cust003@gmail.com", "customers123", "Indah", "Darmosalim", "1990-02-15", "62614577878"),
 ("CUS004", "customer004", "cust004@gmail.com", "customers123", "Gia", "Anisa", "1990-11-15", "62614135848");
 
+-- Insert Entity
 INSERT INTO Status
 VALUES(01, "Dalam Proses"),
 (02, "Konfirmasi");
