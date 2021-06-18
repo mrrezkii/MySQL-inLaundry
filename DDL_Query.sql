@@ -54,9 +54,9 @@ CREATE TABLE Jenis_Layanan(
 CREATE TABLE Pemesanan(
     id_order VARCHAR(11) PRIMARY KEY NOT NULL,
     kode_cuci INT(11) NOT NULL,
-    id_layanan VARCHAR(11) NOT NULL
+    id_layanan VARCHAR(11) NOT NULL,
     catatan TEXT,
-    alamat TEXT NOT NULL,
+    alamat TEXT NOT NULL
 );
 
 CREATE TABLE Status(
