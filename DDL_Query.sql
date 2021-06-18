@@ -59,7 +59,7 @@ CREATE TABLE Status(
 
 CREATE TABLE Pembayaran(
     no_order VARCHAR(11) PRIMARY KEY NOT NULL,
-    no_customer VARCHAR(11) NOT NULL,
+    no_customers VARCHAR(11) NOT NULL,
     no_employee VARCHAR(11) NOT NULL,
     id_status INT(2) NOT NULL,
     kode_cuci VARCHAR(11) NOT NULL,
@@ -67,3 +67,24 @@ CREATE TABLE Pembayaran(
     berat INT(3) NOT NULL,
     total INT(11) NOT NULL
 );
+
+-- Alter relation between table
+ALTER TABLE Jenis_Layanan
+ADD CONSTRAINT fk_jenislayanan_owner
+FOREIGN KEY (no_owner) REFERENCES Owner(no_owner);
+
+ALTER TABLE Pembayaran
+ADD CONSTRAINT fk_pembayaran_customers
+FOREIGN KEY (no_customers) REFERENCES Customers(no_customers);
+
+ALTER TABLE Pembayaran
+ADD CONSTRAINT fk_pembayaran_employee
+FOREIGN KEY (no_employee) REFERENCES Employee(no_employee);
+
+ALTER TABLE Pembayaran
+ADD CONSTRAINT fk_pembayaran_status
+FOREIGN KEY (id_status) REFERENCES Status(id_status);
+
+ALTER TABLE Pembayaran
+ADD CONSTRAINT fk_pembayaran_cucikiloan
+FOREIGN KEY (kode_cuci) REFERENCES Cuci_Kiloan(kode_cuci);
