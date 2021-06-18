@@ -22,7 +22,7 @@ CREATE TABLE Jenis_Layanan(
 CREATE TABLE Owner(
     no_owner VARCHAR(11) PRIMARY KEY NOT NULL,
     username VARCHAR(11) NOT NULL,
-    email VARCHAR(20) NOT NULL,
+    email TEXT NOT NULL,
     password VARCHAR(20) NOT NULL,
     first_name VARCHAR(20) NOT NULL,
     last_name VARCHAR(20),
@@ -33,7 +33,7 @@ CREATE TABLE Owner(
 CREATE TABLE Employee(
     no_employee VARCHAR(11) PRIMARY KEY NOT NULL,
     username VARCHAR(11) NOT NULL,
-    email VARCHAR(20) NOT NULL,
+    email TEXT NOT NULL,
     password VARCHAR(20) NOT NULL,
     first_name VARCHAR(20) NOT NULL,
     last_name VARCHAR(20),
@@ -44,7 +44,7 @@ CREATE TABLE Employee(
 CREATE TABLE Customers(
     no_customers VARCHAR(11) PRIMARY KEY NOT NULL,
     username VARCHAR(11) NOT NULL,
-    email VARCHAR(20) NOT NULL,
+    email TEXT NOT NULL,
     password VARCHAR(20) NOT NULL,
     first_name VARCHAR(20) NOT NULL,
     last_name VARCHAR(20),
@@ -54,7 +54,7 @@ CREATE TABLE Customers(
 
 CREATE TABLE Status(
     id_status INT(2) PRIMARY KEY NOT NULL,
-    status VARCHAR(11) NOT NULL
+    status TEXT NOT NULL
 );
 
 CREATE TABLE Pembayaran(
