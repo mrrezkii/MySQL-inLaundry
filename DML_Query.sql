@@ -86,13 +86,16 @@ JOIN Status st ON st.id_status = pem.id_status
 WHERE cus.id_customers = 'CUS001'
 LIMIT 1;
 
+select * FROM Pembayaran;
 UPDATE Pembayaran
-SET id_status = 01
+SET id_status = 01,
+id_employee = "EMP001"
 WHERE id_customers = 'CUS001';
 
 UPDATE Pembayaran
-SET id_status = 02
-WHERE id_customers = 'CUS001';
+SET id_status = 02,
+id_employee = "EMP002"
+WHERE id_customers = 'CUS003';
 
 -- Update Pesanan
 UPDATE Pembayaran pem
