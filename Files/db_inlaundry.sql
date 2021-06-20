@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 18, 2021 at 11:01 AM
+-- Generation Time: Jun 20, 2021 at 02:04 PM
 -- Server version: 8.0.25-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -168,9 +168,9 @@ CREATE TABLE `Pembayaran` (
 --
 
 INSERT INTO `Pembayaran` (`id_pembayaran`, `id_order`, `id_customers`, `id_employee`, `id_status`, `tanggal_transaksi`, `berat`, `total`) VALUES
-('PEM001', 'ORD001', 'CUS001', NULL, 2, '2021-05-09 12:12:00', 5, 30000),
+('PEM001', 'ORD001', 'CUS001', 'EMP001', 1, '2021-05-09 12:12:00', 5, 30000),
 ('PEM002', 'ORD002', 'CUS002', NULL, 2, '2021-05-09 10:11:00', 10, 60000),
-('PEM003', 'ORD003', 'CUS003', NULL, 1, '2021-05-09 09:25:00', 7, 38500),
+('PEM003', 'ORD003', 'CUS003', 'EMP002', 2, '2021-05-09 09:25:00', 7, 38500),
 ('PEM004', 'ORD004', 'CUS004', NULL, 2, '2021-05-09 09:15:00', 19, 114000),
 ('PEM005', 'ORD005', 'CUS005', NULL, 1, '2021-05-09 07:30:00', 10, 55000);
 
